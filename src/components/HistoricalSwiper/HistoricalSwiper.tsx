@@ -57,7 +57,8 @@ const HistoricalSwiper:FC<HistoricalSwiperProps> = ({slides}) => {
                 slidesPerView="auto"
                 navigation={{
                     nextEl: ".historical-swiper-button-next",
-                    prevEl: ".historical-swiper-button-prev"
+                    prevEl: ".historical-swiper-button-prev",
+                    disabledClass: `${styles.disabled}`
                 }}
                 className={styles.historicalSwiper}
                 freeMode={{
