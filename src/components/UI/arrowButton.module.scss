@@ -1,0 +1,37 @@
+.arrowButton {
+    position: relative;
+    width: clamp(50px * 0.33, (50 * 100vw / 1920), 50px);
+    height: clamp(50px * 0.33, (50 * 100vw / 1920), 50px);
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out 0s;
+    
+    &:not(.outline) {
+        background-color: #fff;
+        box-shadow: 0px 0px 15px 0px #3877EE1A;
+    }
+
+    &.outline {
+        background-color: #F4F5F9;
+        border: 1px solid #42567A80;
+
+        &:hover {
+            background-color: #fff;
+        }
+    }
+
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        width: clamp(10px * 0.33, (10 * 100vw / 1920), 10px);
+        height: clamp(14px * 0.33, (14 * 100vw / 1920), 14px);
+    }
+
+    &.right {
+        svg {
+            transform: translate3d(-50%, -50%, 0) rotate(180deg);
+        }
+    }
+}

@@ -1,0 +1,197 @@
+.wrapper {
+  --diameter: clamp(530px * 0.33, (530 * 100vw / 1920), 530px);
+  --radius: var(--diameter) / 2;
+  --center: var(--diameter) / 2;
+
+  width: 100%;
+  height: 100%;
+  padding: clamp(170px * 0.33, (170 * 100vw / 1920), 170px) 0 clamp(104px * 0.33, (104 * 100vw / 1920), 104px);
+  position: relative;
+}
+
+.rules {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-inline: 1px solid #E2E5EC;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background-color: #E2E5EC;
+  }
+
+  &::before {
+    top: 0;
+    left: calc(50% - 0.5px);
+    width: 1px;
+    height: 100%;
+  }
+  
+  &::after {
+    left: 0;
+    top: calc(clamp(215px * 0.33, (215 * 100vw / 1920), 215px) + var(--center));
+    width: 100%;
+    height: 1px;
+  }
+}
+
+
+.title {
+  font-size: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+  font-weight: 700;
+  line-height: 1.2em;
+  color: #42567A;
+  width: min-content;
+  padding-left: clamp(80px * 0.33, (80 * 100vw / 1920), 80px);
+  position: relative;
+  margin-bottom: clamp(393px * 0.33, (393 * 100vw / 1920), 393px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: clamp(7px * 0.33, (7 * 100vw / 1920), 7px) 0;
+    width: clamp(5px * 0.33, (5 * 100vw / 1920), 5px);
+    height: calc(100% - clamp(7px * 0.33, (7 * 100vw / 1920), 7px) * 2);
+    background: linear-gradient(180deg, #3877EE 0%, #EF5DA8 100%);
+  }
+}
+
+.middleSlider { 
+  position: absolute;
+  width: var(--diameter);
+  height: var(--diameter);
+  top: clamp(215px * 0.33, (215 * 100vw / 1920), 215px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 100%;
+  border: 1px solid #E2E5EC;
+}
+
+.dots {
+  position: absolute;
+  width: var(--diameter);
+  height: var(--diameter);
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease-out 0s;
+  transform: rotate(var(--rotate-angle));
+  z-index: 1;
+}
+
+.dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  top: calc(var(--center) + var(--radius) * var(--calculated-angle-x));
+  left: calc(var(--center) + var(--radius) * var(--calculated-angle-y));
+  border: 1px solid #42567A;
+  background-color: #42567A;
+  border-radius: 100%;
+  transition: all 0.2s ease-out, transform 0.5s ease-out;
+  cursor: pointer;
+  transform-origin: center;
+  transform: translate3d(-50%, -50%, 0) rotate(calc(0deg - var(--rotate-angle)));
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 100%;
+    width: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+    height: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+  }
+
+  &:hover, &.active {
+    width: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+    height: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+    background-color: #F4F5F9;
+    border-color: #303E5880;
+
+    .dotNumber {
+      opacity: 1;
+    }
+  }
+
+  &.active{
+
+    .dotTitle{
+      opacity: 1;
+      transition-delay: 0.5s;
+    }
+
+  }
+
+}
+
+
+.dotNumber, .dotTitle {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  font-size: clamp(20px * 0.33, (20 * 100vw / 1920), 20px);
+  line-height: 1.5em;
+  color: #42567A;
+  top: 50%;
+  transition: opacity 0.2s ease-out;
+}
+
+.dotNumber {
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.dotTitle {
+  left: calc(100% + clamp(20px * 0.33, (20 * 100vw / 1920), 20px));
+  transform: translate3d(0, -50%, 0);
+  transition-delay: 0s;
+  width: min-content;
+}
+
+.dateRange {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  display: flex;
+  gap: clamp(90px * 0.33, (90 * 100vw / 1920), 90px);
+  
+  strong {
+    font-size: clamp(200px * 0.33, (200 * 100vw / 1920), 200px);
+    line-height: 0.8em;
+
+    &:first-child {
+      color: #5D5FEF;
+    }
+    &:last-child {
+      color: #EF5DA8;
+    }
+  }
+}
+
+.middleSliderControlls {
+  margin-inline: clamp(80px * 0.33, (80 * 100vw / 1920), 80px) !important;
+  margin-bottom: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+  z-index: 1;
+  
+  .middleSliderControllsIndicator {
+    font-size: clamp(14px * 0.33, (14 * 100vw / 1920), 14px);
+    color: #42567A;
+    margin-bottom: clamp(20px * 0.33, (20 * 100vw / 1920), 20px);
+  }
+
+  .middleSliderControllsWrapper {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px * 0.33, (20 * 100vw / 1920), 20px);
+  }
+
+
+}

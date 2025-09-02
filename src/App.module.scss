@@ -1,0 +1,7 @@
+.App {
+  max-width: clamp(1440px * 0.33, (1440 * 100vw / 1920), 1440px);
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+}
