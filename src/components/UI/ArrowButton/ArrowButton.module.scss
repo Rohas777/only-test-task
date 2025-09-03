@@ -5,6 +5,11 @@
     border-radius: 100%;
     cursor: pointer;
     transition: background-color 0.2s ease-out 0s;
+
+    @media only screen and (max-width: 600px){
+        width: 25px;
+        height: 25px;
+    }
     
     &:not(.outline) {
         background-color: #fff;
@@ -14,6 +19,10 @@
     &.outline {
         background-color: #F4F5F9;
         border: 1px solid #42567A80;
+
+        @media only screen and (max-width: 600px){
+            border-width: 2px;
+        }
 
         &:hover {
             background-color: #fff;
@@ -27,6 +36,15 @@
         transform: translate3d(-50%, -50%, 0);
         width: clamp(10px * 0.33, (10 * 100vw / 1920), 10px);
         height: clamp(14px * 0.33, (14 * 100vw / 1920), 14px);
+
+        @media only screen and (max-width: 600px){
+            width: 6px;
+            height: 8px;
+
+            path {
+                stroke-width: 3;
+            }
+        }
     }
 
     &.right {

@@ -4,4 +4,8 @@
   margin: 0 auto;
   min-height: 100dvh;
   position: relative;
+
+  @media only screen and (max-width: 600px){
+      max-width: none;
+  }
 }

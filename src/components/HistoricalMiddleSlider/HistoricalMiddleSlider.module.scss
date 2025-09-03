@@ -7,6 +7,20 @@
     transform: translate(-50%, 0);
     border-radius: 100%;
     border: 1px solid #e2e5ec;
+
+    @media only screen and (max-width: 600px){
+        position: relative;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        transform: none;
+        border-radius: 0;
+        border: none;
+        margin: 0 20px;
+        padding-bottom: 57px;
+        margin-bottom: 20px;
+    }
 }
 
 .dots {
@@ -18,6 +32,13 @@
     transition: all 0.5s ease-out 0s;
     transform: rotate(var(--rotate-angle));
     z-index: 1;
+
+    @media only screen and (max-width: 600px){
+        transform: none;
+        width: 100%;
+        height: auto;
+        position: static;
+    }
 }
 
 .dot {
@@ -36,6 +57,10 @@
     transform-origin: center;
     transform: translate3d(-50%, -50%, 0) rotate(calc(0deg - var(--rotate-angle)));
 
+    @media only screen and (max-width: 600px){
+        display: none;
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -45,6 +70,10 @@
         border-radius: 100%;
         width: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
         height: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
+
+        @media only screen and (max-width: 600px){
+            content: none;
+        }
     }
 
     &:hover,
@@ -53,6 +82,11 @@
         height: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
         background-color: #f4f5f9;
         border-color: #303e5880;
+
+        @media only screen and (max-width: 600px){
+            width: auto;
+            height: auto;
+        }
 
         .dotNumber {
             opacity: 1;
@@ -99,9 +133,21 @@
     display: flex;
     gap: clamp(90px * 0.33, (90 * 100vw / 1920), 90px);
 
+    @media only screen and (max-width: 600px){
+        position: static;
+        transform: none;
+        gap: 20px;
+        justify-content: center;
+    }
+
     strong {
         font-size: clamp(200px * 0.33, (200 * 100vw / 1920), 200px);
         line-height: 0.8em;
+
+        @media only screen and (max-width: 600px){
+            font-size: 56px;
+            line-height: auto;
+        }
 
         &:first-child {
             color: #5d5fef;
@@ -117,15 +163,31 @@
     margin-bottom: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
     z-index: 1;
 
+    @media only screen and (max-width: 600px){
+        order: 1;
+        margin-inline: 20px;
+        margin-top: 78px;
+        margin-bottom: 0;
+    }
+
     .middleSliderControllsIndicator {
         font-size: clamp(14px * 0.33, (14 * 100vw / 1920), 14px);
         color: #42567a;
         margin-bottom: clamp(20px * 0.33, (20 * 100vw / 1920), 20px);
+
+        @media only screen and (max-width: 600px){
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
     }
 
     .middleSliderControllsWrapper {
         display: flex;
         align-items: center;
         gap: clamp(20px * 0.33, (20 * 100vw / 1920), 20px);
+
+        @media only screen and (max-width: 600px){
+            gap: 8px;
+        }
     }
 }

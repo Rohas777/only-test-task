@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes } from 'react'
-import styles from './arrowButton.module.scss'
+import styles from './ArrowButton.module.scss'
 import classNames from 'classnames'
 
 interface ArrowButtonProps extends HTMLAttributes<HTMLDivElement> {

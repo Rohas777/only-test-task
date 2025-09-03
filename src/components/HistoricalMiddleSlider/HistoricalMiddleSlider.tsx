@@ -3,11 +3,10 @@ import styles from './HistoricalMiddleSlider.module.scss';
 import { FC, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ISlider } from '../../models/ISlider';
-import ArrowButton from '../UI/arrowButton';
-import HistoricalSwiper from '../HistoricalSwiper/HistoricalSwiper';
+import ArrowButton from '../UI/ArrowButton/ArrowButton';
 import ICalculatedDot, { isCalculatedDot } from '../../models/ICalculatedDot';
 import { addZeroToNumber } from '../../helpers/helpers';
+import useDebounce from '../../hooks/useDebounce';
 
 
 

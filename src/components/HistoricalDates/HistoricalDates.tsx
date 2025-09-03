@@ -1,13 +1,9 @@
-import classNames from 'classnames';
 import styles from './HistoricalDates.module.scss';
 import { FC, useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { ISlider } from '../../models/ISlider';
-import ArrowButton from '../UI/arrowButton';
 import HistoricalSwiper from '../HistoricalSwiper/HistoricalSwiper';
 import HistoricalMiddleSlider from '../HistoricalMiddleSlider/HistoricalMiddleSlider';
-import ICalculatedDot, { isCalculatedDot } from '../../models/ICalculatedDot';
+import ICalculatedDot from '../../models/ICalculatedDot';
 
 
 interface HistoricalDatesProps {
@@ -17,7 +13,7 @@ interface HistoricalDatesProps {
 const HistoricalDates:FC<HistoricalDatesProps> = ({ sliders }) => {
 
   const [calculatedDots, setCalculatedDots] = useState<ICalculatedDot[] | null>(null)
-  const [slides, setSlides] = useState<ISlider['slides']>(sliders[0].slides)
+  const [currentSlider, setCurrentSlider] = useState<ISlider>(sliders[0])
 
   const initializeDots = (sliders: ISlider[]):ICalculatedDot[] => {
     const calculatedDots = [];
@@ -48,7 +44,7 @@ const HistoricalDates:FC<HistoricalDatesProps> = ({ sliders }) => {
     const newSlider = sliders.find(slider => slider.id === dot.id)
 
     if (newSlider) {
-      setSlides(newSlider.slides)
+      setCurrentSlider(newSlider)
     }
   }
 
@@ -67,7 +63,7 @@ const HistoricalDates:FC<HistoricalDatesProps> = ({ sliders }) => {
         <h2 className={styles.title}>Исторические даты</h2>
          
         {calculatedDots && <HistoricalMiddleSlider dots={calculatedDots} onChangeActiveDot={switchSlider} />}
-        <HistoricalSwiper slides={slides} />
+        <HistoricalSwiper slides={currentSlider.slides} sliderTitle={currentSlider.title} />
     </div>
   )
 }
