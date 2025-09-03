@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import styles from './HistoricalSwiper.module.scss'
 import classNames from 'classnames'
 import {Swiper, SwiperClass, SwiperSlide} from 'swiper/react';
-import {  A11y, FreeMode, Navigation } from 'swiper/modules';
+import {  A11y, FreeMode, Navigation, Pagination } from 'swiper/modules';
 import { ISlider } from '../../models/ISlider';
 import ArrowButton from '../UI/ArrowButton/ArrowButton';
 import useSmoothHeightResize from '../../hooks/useSmoothHeightResize';
@@ -10,6 +10,7 @@ import useSmoothHeightResize from '../../hooks/useSmoothHeightResize';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 import useDebounce from '../../hooks/useDebounce';
 
@@ -52,17 +53,23 @@ const HistoricalSwiper:FC<HistoricalSwiperProps> = ({slides, sliderTitle = ""}) 
     const swiperID = Date.now();
 
     return (
-        <>
+        <div className={classNames(`historical-swiper-${swiperID}`, styles.historicalSwiperContainer)}>
             <h3 className={styles.historicalSwiperTitle}>{titleToRender}</h3>
-            <div ref={wrapperRef} className={classNames(styles.historicalSwiperWrapper, {[styles.hidden]: !isVisible}, `historical-swiper-${swiperID}`)}>
+            <div ref={wrapperRef} className={classNames(styles.historicalSwiperWrapper, {[styles.hidden]: !isVisible})}>
                 <Swiper
                     ref={swiperRef}
-                    modules={[Navigation, FreeMode, A11y]}
+                    modules={[Navigation, Pagination, FreeMode, A11y]}
                     slidesPerView="auto"
                     navigation={{
                         nextEl: `.historical-swiper-${swiperID} .historical-swiper-button-next`,
                         prevEl: `.historical-swiper-${swiperID} .historical-swiper-button-prev`,
                         disabledClass: `${styles.disabled}`
+                    }}
+                    pagination={{
+                        el: `.historical-swiper-${swiperID} .historical-swiper-pagination`,
+                        bulletClass: `${styles.historicalSwiperBullet}`,
+                        bulletActiveClass: `${styles.active}`,
+                        clickable: true
                     }}
                     className={styles.historicalSwiper}
                     freeMode={{
@@ -87,7 +94,8 @@ const HistoricalSwiper:FC<HistoricalSwiperProps> = ({slides, sliderTitle = ""}) 
                     color='#3877EE'
                     className={classNames(styles.sliderNext, "historical-swiper-button-next")} />
             </div>
-        </>
+            <div className={classNames(styles.historicalSwiperPagination, "historical-swiper-pagination")}></div>
+        </div>
     )
 }
 

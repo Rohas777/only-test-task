@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './HistoricalMiddleSlider.module.scss';
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ArrowButton from '../UI/ArrowButton/ArrowButton';
@@ -126,7 +126,7 @@ const HistoricalMiddleSlider: FC<HistoricalMiddleSliderProps> = ({ dots, onChang
                     <strong ref={endDateRef}>{orderedDots[0].dateRange.end}</strong>
                 </div>
             </div>
-            <div className={styles.middleSliderControlls}>
+            <div className={classNames(styles.middleSliderControlls, "middle-slider-controlls")}>
                 <div className={styles.middleSliderControllsIndicator}>
                     {addZeroToNumber(isCalculatedDot(activeDot) ? orderedDots.findIndex(dot => dot.id === activeDot.id) + 1 : 1)} / {addZeroToNumber(orderedDots.length)}
                 </div>

@@ -14,6 +14,7 @@ const HistoricalDates:FC<HistoricalDatesProps> = ({ sliders }) => {
 
   const [calculatedDots, setCalculatedDots] = useState<ICalculatedDot[] | null>(null)
   const [currentSlider, setCurrentSlider] = useState<ISlider>(sliders[0])
+  const [middleSliderControllsWidth, setMiddleSliderControllsWidth] = useState<number>(0)
 
   const initializeDots = (sliders: ISlider[]):ICalculatedDot[] => {
     const calculatedDots = [];
@@ -57,8 +58,20 @@ const HistoricalDates:FC<HistoricalDatesProps> = ({ sliders }) => {
     setCalculatedDots(initializeDots(sliders));
   }, [])
 
+  useEffect(() => {
+    if ((document.querySelector('.middle-slider-controlls') as HTMLElement)) {
+      const width = (document.querySelector('.middle-slider-controlls') as HTMLElement)?.offsetWidth;
+      setMiddleSliderControllsWidth(width)
+    }
+  }, [calculatedDots])
+
   return (
-    <div className={styles.wrapper}>
+    <div 
+      className={styles.wrapper}  
+      style={{
+        "--middle-slider-controlls-width": middleSliderControllsWidth
+      } as any}
+    >
         <div className={styles.rules}></div>
         <h2 className={styles.title}>Исторические даты</h2>
          
