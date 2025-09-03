@@ -162,6 +162,7 @@
     margin-inline: clamp(80px * 0.33, (80 * 100vw / 1920), 80px) !important;
     margin-bottom: clamp(56px * 0.33, (56 * 100vw / 1920), 56px);
     z-index: 1;
+    width: fit-content;
 
     @media only screen and (max-width: 600px){
         order: 1;

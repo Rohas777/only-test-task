@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import styles from './HistoricalMiddleSlider.module.scss';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ArrowButton from '../UI/ArrowButton/ArrowButton';
 import ICalculatedDot, { isCalculatedDot } from '../../models/ICalculatedDot';
 import { addZeroToNumber } from '../../helpers/helpers';
-import useDebounce from '../../hooks/useDebounce';
 
 
 

@@ -1,5 +1,5 @@
 import styles from './HistoricalDates.module.scss';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { ISlider } from '../../models/ISlider';
 import HistoricalSwiper from '../HistoricalSwiper/HistoricalSwiper';
 import HistoricalMiddleSlider from '../HistoricalMiddleSlider/HistoricalMiddleSlider';
